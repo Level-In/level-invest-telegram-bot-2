@@ -1,9 +1,6 @@
 name: Morning Telegram Message
 
 on:
-  schedule:
-    - cron: '00 08 * * 1-6'
-      timezone: 'Europe/Warsaw'
   workflow_dispatch:
 
 jobs:
