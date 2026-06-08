@@ -1,0 +1,24 @@
+name: Morning Telegram Message
+
+on:
+  schedule:
+    - cron: '00 08 * * 1-6'
+      timezone: 'Europe/Warsaw'
+  workflow_dispatch:
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install requests
+
+      - run: python morning_message.py
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
